@@ -1,0 +1,55 @@
+
+/* ===== v3: content styling + mobile layout upgrades ===== */
+/* sub-headings and real bullet lists (were bold text / typed dashes) */
+.prose h4.sub,h4.sub{font-size:18px;line-height:1.3;font-weight:700;color:#4a0d16;margin:1.7em 0 .45em;letter-spacing:0;text-transform:none}
+.prose ul.dash,ul.dash{margin:.4em 0 1em;padding-left:1.25em}
+ul.dash li{margin:.3em 0}
+/* collapsible policy sections */
+details.acc{border:1px solid rgba(74,13,22,.16);border-radius:14px;margin:14px 0;background:#fff;overflow:hidden;scroll-margin-top:90px}
+details.acc>summary{cursor:pointer;list-style:none;position:relative;padding:18px 52px 18px 18px;font-weight:700;font-size:17px;line-height:1.3;color:#4a0d16}
+details.acc>summary::-webkit-details-marker{display:none}
+details.acc>summary::after{content:"+";position:absolute;right:18px;top:50%;transform:translateY(-50%);font-size:26px;font-weight:400;color:#b8995a}
+details.acc[open]>summary::after{content:"\2013"}
+details.acc[open]>summary{border-bottom:1px solid rgba(74,13,22,.12)}
+details.acc>.acc-body{padding:6px 18px 20px}
+.policy-links{display:grid;gap:10px;margin:14px 0 22px}
+.policy-links a{display:block;padding:14px 18px;border:1.5px solid rgba(128,22,36,.28);border-radius:12px;font-weight:600;text-decoration:none;background:#fff}
+/* homepage highlights strip */
+.facts{background:#f6f1ea}
+.facts ul{list-style:none;margin:0;padding:24px 0;display:grid;grid-template-columns:repeat(4,1fr);gap:12px;text-align:center}
+.facts li{margin:0;padding:0}
+.facts b{display:block;font-size:clamp(24px,3vw,36px);line-height:1.1;color:#801624;font-weight:700}
+.facts span{display:block;margin-top:6px;font-size:12px;letter-spacing:.09em;text-transform:uppercase;color:#5d4a4e}
+.stickbar{display:none}
+@media(max-width:560px){
+ /* hero: calmer headline + photo instead of video */
+ .hero.lg h1,.hero h1{font-size:clamp(30px,8.4vw,38px)}
+ /* top strip: bigger tap targets */
+ .util a{display:inline-block;padding:12px 6px}
+ .util .container{padding-top:0;padding-bottom:0}
+ /* homepage highlights */
+ .facts ul{grid-template-columns:1fr 1fr;gap:20px 12px;padding:22px 0}
+ /* team: two cards per row */
+ .grid:has(.card.person){grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
+ .card.person .body{padding:12px 12px 16px}
+ .card.person h5{font-size:15px;line-height:1.25;margin-bottom:4px}
+ .card.person p{font-size:13px;line-height:1.35}
+ /* wide tables -> cards */
+ .tablewrap:has(table.stack){margin:20px 0;overflow:visible;background:none;border:0;box-shadow:none}
+ table.stack{min-width:0!important;width:100%;border:0}
+ table.stack,table.stack tbody,table.stack tr,table.stack td{display:block;width:100%}
+ table.stack thead{display:none}
+ table.stack tr{background:#fff;border:1px solid rgba(74,13,22,.14);border-radius:14px;margin:0 0 14px;overflow:hidden;box-shadow:0 6px 18px rgba(74,13,22,.07)}
+ table.stack td{display:flex;justify-content:space-between;align-items:baseline;gap:14px;padding:12px 16px;border:0;border-top:1px solid rgba(74,13,22,.08);text-align:right;font-size:15px}
+ table.stack td:first-child{display:block;background:#801624;color:#fff;font-weight:700;text-align:left;border-top:0}
+ table.stack td[data-label]::before{content:attr(data-label);font-weight:600;color:#6b5a5d;text-align:left}
+ table.stack td:last-child{font-weight:700;color:#4a0d16;background:#f6f1ea}
+ /* contact: tap-to-call / email buttons, smaller maps */
+ main a[href^="tel:"],main a[href^="mailto:"]{display:flex;align-items:center;justify-content:center;margin:8px 0;padding:14px 16px;border:1.5px solid rgba(128,22,36,.3);border-radius:12px;background:#fff;font-weight:700;text-decoration:none;text-align:center}
+ .map{height:210px}
+ /* sticky tour bar */
+ .stickbar{display:flex;align-items:center;justify-content:center;position:fixed;left:12px;right:12px;bottom:calc(12px + env(safe-area-inset-bottom,0px));z-index:88;height:50px;border-radius:999px;background:linear-gradient(100deg,#c01f33,#8a1526);color:#fff;font-weight:700;font-size:15px;letter-spacing:.04em;text-decoration:none;box-shadow:0 10px 26px rgba(74,13,22,.4);opacity:0;transform:translateY(16px);pointer-events:none;transition:opacity .25s,transform .25s}
+ .stickbar.on{opacity:1;transform:none;pointer-events:auto}
+ .has-stick .totop{bottom:76px}
+ .has-stick .stickbar{right:76px}
+}
